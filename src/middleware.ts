@@ -6,7 +6,11 @@ function hasRole(tokenRoles: string[], expected: string): boolean {
   return tokenRoles.some((role) => role.toLowerCase() === expected.toLowerCase());
 }
 
-export default withAuth(
+function isLocalhost(request: Request) {
+  return ["localhost", "127.0.0.1", "[::1]"].includes(request.nextUrl.hostname);
+}
+
+const authMiddleware = withAuth(
   (request) => {
     const token = request.nextauth.token;
     const pathname = request.nextUrl.pathname;
@@ -27,6 +31,13 @@ export default withAuth(
     },
   },
 );
+
+export default function middleware(request: any, event: any) {
+  if (isLocalhost(request)) {
+    return NextResponse.next();
+  }
+  return authMiddleware(request, event);
+}
 
 export const config = {
   matcher: [

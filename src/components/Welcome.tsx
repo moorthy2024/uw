@@ -1,6 +1,6 @@
 import { Sparkles } from "lucide-react";
 import { motion } from "motion/react";
-import qbeLogo from "../assets/174818733bb6f0bae0390285dd15938dee74caa7.png";
+import qbeLogo from "../assets/qbeLogo.png";
 
 interface WelcomeProps {
   onContinue: () => void;

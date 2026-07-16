@@ -642,7 +642,7 @@ export function CustomerTable({ onSubmissionSelect, selectedId, filterType = "al
               {sortedSubmissions.map((sub) => (
                 <tr
                   key={sub.id}
-                  //onClick={() => onSubmissionSelect?.(sub.id)}
+                  onClick={() => onSubmissionSelect?.(sub.id)}
                   className={`hover:bg-[#F7F8FA] cursor-pointer transition-colors ${
                     selectedId === sub.id ? "bg-blue-50 border-l-4 border-[#009AE4]" : ""
                   }`}

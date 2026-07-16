@@ -15,7 +15,9 @@ export const env = {
 
   // NextAuth / Azure AD (Entra ID) configuration.
   // These MUST be set in deployment secrets.
-  authSecret: process.env.NEXTAUTH_SECRET ?? "",
+  authSecret:
+    process.env.NEXTAUTH_SECRET || process.env.AUTH_SECRET ||
+    (process.env.NODE_ENV !== "production" ? "development-secret" : ""),
   entraClientId: process.env.AZURE_AD_CLIENT_ID ?? "",
   entraClientSecret: process.env.AZURE_AD_CLIENT_SECRET ?? "",
   entraTenantId: process.env.AZURE_AD_TENANT_ID ?? "",

@@ -1,5 +1,5 @@
 import { Users, UserCircle, Sparkles } from "lucide-react";
-import qbeLogo from "../assets/174818733bb6f0bae0390285dd15938dee74caa7.png";
+import qbeLogo from "../assets/qbeLogo.png";
 
 interface RoleSelectionProps {
   onSelectRole: (role: "underwriter" | "manager") => void;

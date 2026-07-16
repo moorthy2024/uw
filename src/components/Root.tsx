@@ -23,7 +23,7 @@ import {
   X,
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import qbeLogo from "../assets/174818733bb6f0bae0390285dd15938dee74caa7.png";
+import qbeLogo from "../assets/qbeLogo.png";
 import { RoleSelection } from "./RoleSelection";
 import { Welcome } from "./Welcome";
 import { RoleContext } from "./RoleContext";

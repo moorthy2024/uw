@@ -286,11 +286,9 @@ function MailRow({ item }: { item: MailItem }) {
       ? "bg-amber-500"
       : item.flag === "info"
       ? "bg-blue-400"
-      : null;
+      : null;  
 
-  const target = item.submission ? `#` : "#";
-
-  //const target = item.submission ? `/submission/${item.submission}` : "#";
+  const target = item.submission ? `/submission/${item.submission}` : "#";
 
   return (
     <Link

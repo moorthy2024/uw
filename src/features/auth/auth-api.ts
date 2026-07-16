@@ -1,6 +1,17 @@
 import NextAuth, { type NextAuthOptions } from "next-auth";
 import { env } from "@/lib/config/env";
 
+const nextAuthSecret =
+  process.env.NEXTAUTH_SECRET ||
+  process.env.AUTH_SECRET ||
+  "development-secret";
+
+process.env.NEXTAUTH_SECRET ||= nextAuthSecret;
+
+if (!process.env.NEXTAUTH_URL) {
+  process.env.NEXTAUTH_URL = "http://localhost:3000";
+}
+
 function extractRoles(profile: Record<string, unknown> | undefined): string[] {
   if (!profile) {
     return [];
@@ -36,7 +47,7 @@ async function refreshAccessToken(token: any) {
 }
 
 export const authOptions: NextAuthOptions = {
-  secret: env.authSecret || "development-secret",
+  secret: nextAuthSecret,
   session: {
     strategy: "jwt",
   },
@@ -69,4 +80,5 @@ export const authOptions: NextAuthOptions = {
   },
 };
 
-export const { handlers, auth } = NextAuth(authOptions);
+const authHandler = NextAuth(authOptions);
+export { authHandler };
